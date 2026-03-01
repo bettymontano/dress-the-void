@@ -1,0 +1,367 @@
+/* Tipografías */
+
+@import url(fonts.css);
+
+/* --------------------------------------------- */
+/* Variables */
+
+:root {
+
+    /* Colores */
+    --color-bg: #F2EDE3;
+    --color-main: #323232;
+    --color-secondary: #6E6660;
+    --color-tertiary: rgba(178, 170, 163, 0.2);
+
+    /* Tipografías */
+    --font-sagace: 'Sagace Medium', Arial, Helvetica, sans-serif;
+    --font-haas: 'Neue Haas Grotesk Roman', Arial, Helvetica, sans-serif;
+
+    /* Medidas */
+    --max: 1100px;
+    --pad: 32px;
+    --illo-size: 120px;
+}
+
+/* --------------------------------------------- */
+/* Declaraciones Globales */
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background-color: var(--color-bg);
+    color: var(--color-main);
+    font-family: var(--font-haas);
+    font-size: .8rem;
+    line-height: 1.4;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-main);
+}
+
+::selection {
+    background-color: var(--color-main);
+    color: var(--color-bg);
+}
+
+/* --------------------------------------------- */
+/* Elementos "Fijos" */
+
+.app {
+    min-height: 100vh;
+    padding: var(--pad);
+}
+
+header {
+    text-align: center;
+    max-width: 320px;
+    margin: 0 auto;
+    padding-top: 10px;
+}
+
+header h1 {
+    font-size: 2.2rem;
+    line-height: 2;
+    letter-spacing: -0.02em;
+    font-family: var(--font-sagace);
+}
+
+footer {
+    position: fixed;
+    left: 60px;
+    bottom: 60px;
+    font-size: 0.8em;
+    color: var(--color-secondary);
+}
+
+/* --------------------------------------------- */
+/* Main */
+
+main {
+    position: relative;
+    max-width: var(--max);
+    margin: 0 auto;
+    padding-top: 24px;
+    padding-bottom: 80px;
+}
+
+/* Loading */
+.loading-wrapper {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    z-index: 50;
+    pointer-events: none; 
+    opacity: 0;
+}
+
+.loading-wrapper.is-active {
+    opacity: 1;
+    pointer-events: all;
+    background-color: var(--color-bg);
+}
+
+.loading {
+    width: 300px;
+    height: 6px;
+    background-color: var(--color-tertiary);
+    border-radius: 6px;
+    overflow: hidden;
+    position: relative;
+}
+
+.loading__completion {
+    width: 0%;
+    height: 100%;
+    background-color: var(--color-main);
+}
+
+.loading-pct {
+    color: var(--color-main);
+    position: absolute;
+    top: 42%;
+    padding: 4px 12px;
+    font-size: 1.2rem;
+}
+
+/* Juego Oculto mientras está el Loading */
+
+main.is-loading #game {
+    /* opacity: 0; */
+    pointer-events: none;
+}
+
+/* Layout del Juego */
+
+#game {
+    position: relative;
+    display: grid; /* estoy usando grid en lugar de flex para acomodar los accesorios exactamente donde los quiero, en forma de arco sobre el gato */
+    place-items: center;
+    padding-top: 40px;
+}
+
+.playground {
+    position: relative;
+    width: min(900px, 100%);
+    height: 400px;
+    display: grid;
+    place-items: center;
+}
+
+/* Gatito */
+
+.void {
+    position: relative;
+    width: 380px;
+    height: 320px;
+    display: grid;
+    place-items: center;
+}
+
+.cat {
+    position: absolute;
+    left: 50%;
+    bottom: 20px;
+    transform: translateX(-50%);
+    width: var(--illo-size);
+    height: var(--illo-size);
+    z-index: 10;
+}
+
+.cat__body, .cat__wear, .cat__eyes {
+    position: absolute;
+    inset: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.cat__body {
+    z-index: 1;
+    background-image: url("../img/void.webp");
+}
+
+.cat__eyes {
+    z-index: 2;
+    background-image: url("../img/eyes.webp");
+}
+
+.cat__wear {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+}
+
+/* --------------------------------------------- */
+/* Accesorios */
+
+.accessories {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 20;
+}
+
+.accessory {
+    position: absolute;
+    width: var(--illo-size);
+    height: var(--illo-size);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    cursor: grab;
+    pointer-events: auto;
+    /* para poder acomodar los accesorios en la forma que quiero: */
+    transform: translate(-50%, -50%);
+    transform-origin: center; 
+}
+
+.accessory.active {
+    cursor: grabbing;
+}
+
+/* Quise acomodar todos los accesorios manualmente y por porcentaje porque no estoy segura de qué otra forma lo podría hacer para que queden en forma de arco y el lugar que me los imagino */
+.accessory.collar {
+    background-image: url("../img/collar.webp");
+    left: 8%;
+    top: 45%
+}
+
+.accessory.scarf {
+    background-image: url("../img/scarf.webp");
+    left: 18%;
+    top: 33%;
+}
+
+.accessory.cap {
+    background-image: url("../img/cap.webp");
+    left: 27%;
+    top: 33%;
+}
+
+.accessory.sombrero {
+    background-image: url("../img/sombrero.webp");
+    left: 37%;
+    top: 28%;
+}
+
+.accessory.neck {
+    background-image: url("../img/neck.webp");
+    left: 49%;
+    top: 18%;
+}
+
+.accessory.flower {
+    background-image: url("../img/flower.webp");
+    left: 62%;
+    top: 26%;
+}
+
+.accessory.boots {
+    background-image: url("../img/boots.webp");
+    left: 72%;
+    top: 20%;
+}
+
+.accessory.glasses {
+    background-image: url("../img/glasses.webp");
+    left: 85%;
+    top: 40%;
+}
+
+.accessory.hat {
+    background-image: url("../img/hat.webp");
+    left: 96%;
+    top: 55%;
+}
+
+
+/* para el cambiar los accesorios de parent en el JS: */
+.cat__wear .accessory.is-snapped {
+    position: absolute;
+    /* left: 0;
+    top: 0; */
+    transform: translate(-50%, -50%);
+    width: var(--illo-size);
+    height: var(--illo-size);
+    inset: 0;
+    transform: none;
+    cursor: default;
+}
+
+/* --------------------------------------------- */
+/* Instrucciones */
+
+.instructions {
+    position: absolute;
+    z-index: 20;
+    top: 8%;
+    left: 62%;
+}
+
+.steps {
+    margin: 0;
+    padding: 10px 14px;
+    width: 188px;
+    font-size: 1em;
+    line-height: 1.2;
+    color: var(--color-secondary);
+    background-color: var(--color-tertiary);
+    border-radius: 12px 12px 12px 0;
+    overflow: hidden;
+}
+
+.steps .char {
+    display: inline-block;
+}
+
+/* --------------------------------------------- */
+/* Botón de Reset */
+
+.reset {
+    margin-top: 0;
+    padding: 6px 22px;
+    border-radius: 8px;
+    border: 1px solid var(--color-main);
+    font-size: .9rem;
+
+}
+
+/* --------------------------------------------- */
+/* --------------------------------------------- */
+/* Responsivo: Desktop Only en Mobile */
+
+.desktop-only{
+    display: none;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: var(--pad);
+    color: var(--color-main);
+}
+
+@media (max-width: 720px) {
+    .app{
+        display: none;
+    }
+    .desktop-only {
+        display: flex;
+    }
+}
+
