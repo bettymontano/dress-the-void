@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Dress the Void</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="./assets/css/reset.css" />
+        <link rel="stylesheet" href="./assets/css/main.css" />
+    </head>
+    <body>
+
+        <div class="app">
+            <!-- Título e Intro -->
+            <header>
+                <h1>Dress the Void</h1>
+                <p class="intro">Inspired by my real-life cat (a professional mood), this is a drag-and-drop styling playground where shapes become outfits. Drag items onto the cat to dress it up, swap pieces whenever you want, and experiment with different vibes.</p>
+            </header>
+
+
+            <main>
+                <!-- Pantalla de Carga -->
+                <div class="loading-wrapper" aria-hidden="true">
+                    <p class="loading-pct">0%</p>
+                    <div class="loading">
+                        <div class="loading__completion"></div>
+                    </div>
+                </div>
+
+                <!-- Sección Principal -->
+                <section id="game">
+
+                    <!-- Instrucciones -->
+                    <div class="instructions">
+                        <p class="steps step-1">Drag any accessory and drop it on the void.</p>
+                        <p class="steps step-2">Mix and match accessories to create outfits.</p>
+                    </div>
+
+                    <!-- Juego -->
+                    <div class="playground">
+
+                        <!-- Accesorios -->
+                        <div class="accessories">
+                            <div class="accessory collar" data-slot="collar"></div>
+                            <div class="accessory scarf" data-slot="scarf"></div>
+                            <div class="accessory cap" data-slot="cap"></div>
+                            <div class="accessory sombrero" data-slot="sombrero"></div>
+                            <div class="accessory neck" data-slot="neck"></div>
+                            <div class="accessory flower" data-slot="flower"></div>
+                            <div class="accessory boots" data-slot="boots"></div>
+                            <div class="accessory glasses" data-slot="glasses"></div>
+                            <div class="accessory hat" data-slot="hat"></div>
+                        </div>
+
+                        <!-- Gato -->
+                        <div class="void">
+                            <div class="cat">
+                                <div class="cat__body"></div>
+                                <div class="cat__wear"></div>
+                                <div class="cat__eyes"></div>
+                            </div>
+
+                            <div class="slots" aria-hidden="true">
+                                <div class="slot" data-slot="collar"></div>
+                                <div class="slot" data-slot="scarf"></div>
+                                <div class="slot" data-slot="cap"></div>
+                                <div class="slot" data-slot="sombrero"></div>
+                                <div class="slot" data-slot="neck"></div>
+                                <div class="slot" data-slot="flower"></div>
+                                <div class="slot" data-slot="boots"></div>
+                                <div class="slot" data-slot="glasses"></div>
+                                <div class="slot" data-slot="hat"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Botón "Reset" -->
+                    <button class="reset" type="button">Reset</button>
+                </section>
+            </main>
+
+            <!-- Pie de Página -->
+            <footer>
+                <p>Dress The Void © 2026</p>
+                <p>by Beatriz Montaño</p>
+                <p>Created for the World Wide Web</p>
+                <p>25.6866° N, 100.3161° W</p>
+            </footer>
+        </div>
+
+        <!-- Mensaje "Desktop Only" -->
+        <div class="desktop-only">
+            <p>This experience is desktop-only.</p>
+        </div>
+
+        <!-- Scripts -->
+         <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+         <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Draggable.min.js"></script>
+         <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/InertiaPlugin.min.js"></script>
+         <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+         <script src="./assets/js/main.js"></script>
+    </body>
+</html>
